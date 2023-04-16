@@ -10,19 +10,13 @@ export interface Exp {
 export class Symbol implements Exp {
     type: string = "Symbol";
 
-    val: string
-    constructor(val: string) {
-        this.val = val
-    }
+    constructor(readonly val: string) {}
 }
 
 export class Atom implements Exp {
     type: string = "Atom";
 
-    val: number | string
-    constructor(val: number | string) {
-        this.val = val
-    }
+    constructor(readonly val: number | string) {}
     
     toString(): string {
         return this.val.toString()
@@ -32,12 +26,7 @@ export class Atom implements Exp {
 export class Lambda implements Exp {
     type: string = "Lambda";
 
-    arg: Symbol
-    body: Exp
-    constructor(arg: Symbol, body: Exp) {
-        this.arg = arg
-        this.body = body
-    }
+    constructor(readonly arg: Symbol, readonly body: Exp) {}
 
     toString(): string {
         return `(λ${this.arg.val}.${this.body.toString()})`
@@ -46,12 +35,8 @@ export class Lambda implements Exp {
 
 export class App implements Exp {
     type: string = "App";
-    rator: Exp
-    rand: Exp
-    constructor(rator: Exp, rand: Exp) {
-        this.rator = rator
-        this.rand = rand
-    }
+
+    constructor(readonly rator: Exp, readonly rand: Exp) {}
 
     toString(): string {
         return `(${this.rator.toString()} ${this.rand.toString()})`
