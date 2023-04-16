@@ -11,6 +11,10 @@ export class Symbol implements Exp {
     type: string = "Symbol";
 
     constructor(readonly val: string) {}
+
+    toString(): string {
+        return this.val.toString()
+    }    
 }
 
 export class Atom implements Exp {
@@ -43,9 +47,23 @@ export class App implements Exp {
     }
 }
 
-export type Closure = (x: Value) => Value
+export type Closure = (x: Value) => Value;
 
 export type Value = Atom | Closure;
 
-export type Env = (y: Symbol) => Value
+export type Env = (y: Symbol) => Value;
 
+export interface Ops {
+    name: String;
+}
+
+export class Plus implements Exp, Ops {
+    type: string = "Ops"
+    name: string = "Plus";
+
+    constructor(readonly left: Exp, readonly right: Exp) {}
+
+    toString(): string {
+        return `(+ ${this.left.toString()}  ${this.right.toString()})`
+    }
+}

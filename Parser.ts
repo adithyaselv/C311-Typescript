@@ -1,4 +1,4 @@
-import {Exp, Atom, Lambda, App, Symbol} from "./LambdaCalculus.ts";
+import {Exp, Atom, Lambda, App, Symbol, Plus} from "./LambdaCalculus.ts";
 
 export class Parser {
   private input: string;
@@ -53,7 +53,14 @@ export class Parser {
       this.consume(".");
       let body = this.parseExp();
       return new Lambda(symbol, body);
-    } else {
+    } 
+    else if (ch === "+") {
+      this.consume("+");
+      let left = this.parseExp();
+      let right = this.parseExp();
+      return new Plus(left, right);
+    } 
+    else {
       let rator = this.parseExp();
       let rand = this.parseExp();
       return new App(rator, rand);

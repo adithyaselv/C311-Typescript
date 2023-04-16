@@ -1,8 +1,8 @@
 
-import {Exp, Atom, Lambda, App, Symbol, Env, Value} from "./LambdaCalculus.ts";
+import {Exp, Atom, Lambda, App, Symbol, Value} from "./LambdaCalculus.ts";
 import { Parser } from "./Parser.ts";
 
-let valof: (exp: Exp, env: Env) => Value
+let valof: (exp: Exp, env: (x: Symbol) => Value) => Value
 valof = (exp, env) => {
     if(exp instanceof Atom) {
         return exp;
@@ -36,13 +36,8 @@ console.log("Testing function valof");
 // let exp1 = new App(new Lambda(new Symbol("x"), new Symbol("x")), new Atom(5));
 // let exp2 = new Lambda(new Symbol("x"), new Symbol("x"));
 let exp1 = new Parser("((λx.x) 5)").parse();
-let exp2 = new Parser("(λx.x)").parse();
+let exp2 = new Parser("(λx.x)").parse(); 
 
-
-let env1: Env = (x: Symbol) => {
-    throw new Error("Unbound variable");
-}
-
-console.log(valof(exp1, env1).toString());
-let val1 = valof(exp2, env1);
+console.log(valof(exp1, (x: Symbol) => {throw new Error("Unbound variable")}).toString());
+let val1 = valof(exp2, (x: Symbol) => {throw new Error("Unbound variable")});
 val1 instanceof Function ? console.log(val1(new Atom(25)).toString()) : console.log(val1.toString());
