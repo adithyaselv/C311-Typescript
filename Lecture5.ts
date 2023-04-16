@@ -1,5 +1,6 @@
 
 import {Exp, Atom, Lambda, App, Symbol, Env, Value} from "./LambdaCalculus.ts";
+import { Parser } from "./Parser.ts";
 
 let valof: (exp: Exp, env: Env) => Value
 valof = (exp, env) => {
@@ -12,12 +13,7 @@ valof = (exp, env) => {
     else if(exp instanceof Lambda) {
         return (x: Value) => {
             return valof(exp.body, (y: Symbol) => {
-                if(y.val === exp.arg.val) {
-                    return x;
-                }
-                else {
-                    return env(y);
-                } 
+                return y.val === exp.arg.val ? x : env(y);
             });
         }   
     }
@@ -37,8 +33,11 @@ valof = (exp, env) => {
 }
 
 console.log("Testing function valof");
-let exp1 = new App(new Lambda(new Symbol("x"), new Symbol("x")), new Atom(5));
-let exp2 = new Lambda(new Symbol("x"), new Symbol("x"));
+// let exp1 = new App(new Lambda(new Symbol("x"), new Symbol("x")), new Atom(5));
+// let exp2 = new Lambda(new Symbol("x"), new Symbol("x"));
+let exp1 = new Parser("((λx.x) 5)").parse();
+let exp2 = new Parser("(λx.x)").parse();
+
 
 let env1: Env = (x: Symbol) => {
     throw new Error("Unbound variable");
