@@ -1,8 +1,7 @@
-"use strict";
 // Lecture 1 : Covers basic natural recursion
 // From the foundations of Natural numbers and Induction
-let plus;
-plus = (n, m) => {
+var plus;
+plus = function (n, m) {
     if (m == 0) {
         return n;
     }
@@ -11,8 +10,8 @@ plus = (n, m) => {
     }
 };
 console.log(plus(3, 5));
-let mult;
-mult = (n, m) => {
+var mult;
+mult = function (n, m) {
     if (m == 0) {
         return 0;
     }
@@ -21,8 +20,8 @@ mult = (n, m) => {
     }
 };
 console.log(mult(3, 5));
-let exp;
-exp = (n, m) => {
+var exp;
+exp = function (n, m) {
     if (m == 0) {
         return 1;
     }
@@ -31,8 +30,8 @@ exp = (n, m) => {
     }
 };
 console.log(exp(3, 5));
-let countoccurs;
-countoccurs = (a, li) => {
+var countoccurs;
+countoccurs = function (a, li) {
     if (li.length == 0) {
         return 0;
     }
@@ -44,8 +43,8 @@ countoccurs = (a, li) => {
     }
 };
 console.log(countoccurs(3, [5, 3, 3, 3, 4, 9, 0]));
-let countoccursNest;
-countoccursNest = (a, li) => {
+var countoccursNest;
+countoccursNest = function (a, li) {
     if (li.length == 0) {
         return 0;
     }
@@ -60,8 +59,8 @@ countoccursNest = (a, li) => {
     }
 };
 console.log(countoccursNest(3, [5, 5, 3, 3, [1, 2, 3], 4, [1, 3], 0]));
-let sum;
-sum = (li) => {
+var sum;
+sum = function (li) {
     if (li.length == 0) {
         return 0;
     }
@@ -71,8 +70,8 @@ sum = (li) => {
 };
 //testing sum
 console.log(sum([1, 2, 3, 4, 5]));
-let sumNest;
-sumNest = (li) => {
+var sumNest;
+sumNest = function (li) {
     if (li.length == 0) {
         return 0;
     }

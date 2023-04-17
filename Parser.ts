@@ -1,4 +1,4 @@
-import {Exp, Atom, Lambda, App, Symbol, Plus} from "./LambdaCalculus.ts";
+import {Exp, Atom, Lambda, App, Symbol, Plus} from "./LambdaCalculus";
 
 export class Parser {
   private input: string;

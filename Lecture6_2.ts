@@ -1,6 +1,6 @@
 
-import {Exp, Atom, Lambda, App, Symbol, Value, Closure} from "./LambdaCalculus.ts";
-import { Parser } from "./Parser.ts";
+import {Exp, Atom, Lambda, App, Symbol, Value, Closure} from "./LambdaCalculus";
+import { Parser } from "./Parser";
 
 type KV = {key: Symbol , val: Value};
 type Env = KV[];

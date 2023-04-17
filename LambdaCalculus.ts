@@ -67,3 +67,25 @@ export class Plus implements Exp, Ops {
         return `(+ ${this.left.toString()}  ${this.right.toString()})`
     }
 }
+
+export class Add1 implements Exp, Ops {
+    type: string = "Ops"
+    name: string = "Add1";
+
+    constructor(readonly exp: Exp) {}
+
+    toString(): string {
+        return `(add1 ${this.exp.toString()}})`
+    }
+}
+
+export class Sub1 implements Exp, Ops {
+    type: string = "Ops"
+    name: string = "Sub1";
+
+    constructor(readonly exp: Exp) {}
+
+    toString(): string {
+        return `(sub1 ${this.exp.toString()}})`
+    }
+}
