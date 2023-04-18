@@ -21,7 +21,7 @@ let extendEnv = (x: Value, arg: Symbol, env: Env) => {
     return [{key: arg, val: x}, ...env];
 }
 
-let initEnv: KV[] = [{key: new Symbol("x"), val: new Atom(1)}]
+let initEnv: KV[] = []
 
 let getValue = (x: Symbol, env: Env) => {
     for(let i = 0; i < env.length; i++) {

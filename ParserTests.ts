@@ -1,4 +1,4 @@
-import { Parser } from "./Parser.ts";
+import { Parser } from "./Parser";
 
 let parser = new Parser("((λx. x) 5)");
 
