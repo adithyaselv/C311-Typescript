@@ -69,6 +69,18 @@ curriedplus = (x) => {
 
 console.log(curriedplus(3)(4))
 
+ type Cont2<A> = (i: (v: A, k: Cont<A>) => A) => A
+
+let curriedplus_cps: (x: number, k: Cont2<number>) => number
+curriedplus_cps = (x, k) => {
+    return k ((y, kk) => {
+        return kk(x + y);
+    });
+}
+
+console.log(curriedplus_cps(3, (threeplus) => threeplus(4, (x: number) => x)))
+
+
 let map: <A, B>(f: (x: A) => B, xs: A[]) => B[]
 map = (f, xs) => {
     if(xs.length === 0) {

@@ -51,7 +51,15 @@ curriedplus = function (x) {
         return x + y;
     };
 };
+// Todo: write a curriedplus_cps
 console.log(curriedplus(3)(4));
+var curriedplus_cps;
+curriedplus_cps = function (x, k) {
+    return k(function (y, kk) {
+        return kk(x + y);
+    });
+};
+console.log(curriedplus_cps(3, function (threeplus) { return threeplus(4, function (x) { return x; }); }));
 var map;
 map = function (f, xs) {
     if (xs.length === 0) {
