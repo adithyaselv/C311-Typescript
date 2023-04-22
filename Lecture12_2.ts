@@ -59,6 +59,6 @@ fibcpsds = () => {
     }
 }
 
-n$ = 6;
+n$ = 25;
 k$ = new InitK();
 console.log(fibcpsds());

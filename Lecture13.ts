@@ -111,7 +111,7 @@ let listTrampoline: <T>(ts: Trampoline<T>[]) => T = (ts) => {
     }
 }
 
-let ts = [fibcpsds(25, new InitK()), fibcpsds(7, new InitK()), fibcpsds(10, new InitK())];
+let ts = [fibcpsds(5000, new InitK()), fibcpsds(7, new InitK()), fibcpsds(10, new InitK())];
 
 console.log(listTrampoline(ts));
 

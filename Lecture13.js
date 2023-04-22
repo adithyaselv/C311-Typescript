@@ -104,5 +104,5 @@ var listTrampoline = function (ts) {
         i++;
     }
 };
-var ts = [fibcpsds(25, new InitK()), fibcpsds(7, new InitK()), fibcpsds(10, new InitK())];
+var ts = [fibcpsds(5000, new InitK()), fibcpsds(7, new InitK()), fibcpsds(10, new InitK())];
 console.log(listTrampoline(ts));
