@@ -103,5 +103,6 @@ var subst = unify(t1, t2, initSubst);
 console.log(subst);
 var t3 = new Pair(x, y);
 var t4 = new Pair(y, new Pair(x, y));
+// should fail
 var subst2 = unify(t3, t4, initSubst);
 console.log(subst2);

@@ -1,6 +1,6 @@
 
-import {Exp, Atom, Lambda, App, Symbol, Value} from "./LambdaCalculus.ts";
-import { Parser } from "./Parser.ts";
+import {Exp, Atom, Lambda, App, Symbol, Value} from "../../utils/LambdaCalculus";
+import { Parser } from "../../utils/Parser";
 
 let valof: (exp: Exp, env: (x: Symbol) => Value) => Value
 valof = (exp, env) => {

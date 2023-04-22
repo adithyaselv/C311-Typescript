@@ -11,8 +11,8 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var LambdaCalculus_1 = require("./LambdaCalculus");
-var Parser_1 = require("./Parser");
+var LambdaCalculus_1 = require("../../utils/LambdaCalculus");
+var Parser_1 = require("../../utils/Parser");
 var Closure = /** @class */ (function () {
     function Closure(arg, body, env) {
         this.arg = arg;
@@ -27,7 +27,7 @@ var Closure = /** @class */ (function () {
 var extendEnv = function (x, arg, env) {
     return __spreadArray([{ key: arg, val: x }], env, true);
 };
-var initEnv = [{ key: new LambdaCalculus_1.Symbol("x"), val: new LambdaCalculus_1.Atom(1) }];
+var initEnv = [];
 var getValue = function (x, env) {
     for (var i = 0; i < env.length; i++) {
         if (env[i].key.val === x.val) {

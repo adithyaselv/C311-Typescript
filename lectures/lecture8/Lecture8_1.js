@@ -2,8 +2,8 @@
 // Lecture 8 : More Interpreters 
 // Call by value, Call by reference, Call by name, Call by need
 Object.defineProperty(exports, "__esModule", { value: true });
-var LambdaCalculus_1 = require("./LambdaCalculus");
-var Parser_1 = require("./Parser");
+var LambdaCalculus_1 = require("../../utils/LambdaCalculus");
+var Parser_1 = require("../../utils/Parser");
 var valofCallByName;
 valofCallByName = function (exp, env) {
     if (exp instanceof LambdaCalculus_1.Atom) {

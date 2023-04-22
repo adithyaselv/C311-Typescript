@@ -1,8 +1,8 @@
 "use strict";
 // Lecture 10: Eta reduction and more CPS
 Object.defineProperty(exports, "__esModule", { value: true });
-var LambdaCalculus_1 = require("./LambdaCalculus");
-var Parser_1 = require("./Parser");
+var LambdaCalculus_1 = require("../../utils/LambdaCalculus");
+var Parser_1 = require("../../utils/Parser");
 var remove8;
 remove8 = function (ls) {
     if (ls.length === 0) {

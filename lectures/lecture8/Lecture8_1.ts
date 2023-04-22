@@ -1,8 +1,8 @@
 // Lecture 8 : More Interpreters 
 // Call by value, Call by reference, Call by name, Call by need
 
-import {Exp, Atom, Lambda, App, Symbol, Ops, Plus} from "./LambdaCalculus";
-import { Parser } from "./Parser";
+import {Exp, Atom, Lambda, App, Symbol, Ops, Plus} from "../../utils/LambdaCalculus";
+import { Parser } from "../../utils/Parser";
 
 type Env = (y: Symbol) => () => Value
 

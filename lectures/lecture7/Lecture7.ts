@@ -1,8 +1,8 @@
 // Lecture 7: RI with respect to closures
 // Add more features to the RI interpreter
 
-import {Exp, Atom, Lambda, App, Symbol, Ops, Plus} from "./LambdaCalculus";
-import { Parser } from "./Parser";
+import {Exp, Atom, Lambda, App, Symbol, Ops, Plus} from "../../utils/LambdaCalculus";
+import { Parser } from "../../utils/Parser";
 
 
 class Closure {

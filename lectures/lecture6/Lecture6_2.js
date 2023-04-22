@@ -9,8 +9,8 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var LambdaCalculus_1 = require("./LambdaCalculus");
-var Parser_1 = require("./Parser");
+var LambdaCalculus_1 = require("../../utils/LambdaCalculus");
+var Parser_1 = require("../../utils/Parser");
 var extendEnv = function (x, arg, env) {
     return __spreadArray([{ key: arg, val: x }], env, true);
 };

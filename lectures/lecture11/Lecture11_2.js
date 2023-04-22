@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var LambdaCalculus_1 = require("./LambdaCalculus");
-var Parser_1 = require("./Parser");
+var LambdaCalculus_1 = require("../../utils/LambdaCalculus");
+var Parser_1 = require("../../utils/Parser");
 var applyEnv = function (env, x, k) {
     return env(x, k);
 };

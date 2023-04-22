@@ -1,5 +1,5 @@
-import {Exp, Atom, Lambda, App, Symbol, Value} from "./LambdaCalculus";
-import { Parser } from "./Parser";
+import {Exp, Atom, Lambda, App, Symbol, Value} from "../../utils/LambdaCalculus";
+import { Parser } from "../../utils/Parser";
 
 type Cont<A> = (x: A) => A;
 

@@ -1,7 +1,7 @@
 // Lecture 6. Intro to representation independance
 
-import {Exp, Atom, Lambda, App, Symbol, Value} from "./LambdaCalculus";
-import { Parser } from "./Parser";
+import {Exp, Atom, Lambda, App, Symbol, Value} from "../../utils/LambdaCalculus";
+import { Parser } from "../../utils/Parser";
 
 
 //From previous Lecture 

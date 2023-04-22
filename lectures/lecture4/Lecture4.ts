@@ -1,7 +1,7 @@
 // Lecture 4 More Lambda calculus
 //
 
-import {Exp, Atom, Lambda, App, Symbol} from "./LambdaCalculus.ts";
+import {Exp, Atom, Lambda, App, Symbol} from "../../utils/LambdaCalculus";
 
 let ExpEqExp: (exp1: Exp, exp2: Exp) => boolean
 ExpEqExp = (exp1, exp2) => {

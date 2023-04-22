@@ -1,7 +1,7 @@
 // Lecture 10: Eta reduction and more CPS
 
-import {Exp, Atom, Lambda, App, Symbol, Value} from "./LambdaCalculus";
-import { Parser } from "./Parser";
+import {Exp, Atom, Lambda, App, Symbol, Value} from "../../utils/LambdaCalculus";
+import { Parser } from "../../utils/Parser";
 
 let remove8: (ls: number[]) => number[];
 remove8 = function (ls: number[]): number[] {
