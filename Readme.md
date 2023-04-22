@@ -17,5 +17,5 @@ This repo contains typescript adaptation of Lectures of course offered by Prof. 
 | Lecture 11|   CPS and RI with Continuations            |
 | Lecture 12|   A-Normal Form & Registerization          |
 | Lecture 13|   Trampoline                               |
-| Lecture 14|   ParentheC                                |
+| Lecture 14|   ParentheC - TODO                         |
 | Lecture 15|   Unify, substitution                      |
