@@ -70,3 +70,39 @@ var runTrampoline = function (t) {
     }
 };
 console.log(runTrampoline(fibcpsds(25, new InitK())));
+var runBiTrampoline = function (t1, t2) {
+    var t1$ = t1;
+    var t2$ = t2;
+    while (t1$ instanceof Func && t2$ instanceof Func) {
+        t1$ = t1$.jump();
+        t2$ = t2$.jump();
+    }
+    if (t1$ instanceof Value) {
+        return t1$.jumpout;
+    }
+    if (t2$ instanceof Value) {
+        return t2$.jumpout;
+    }
+};
+console.log(runBiTrampoline(fibcpsds(25, new InitK()), fibcpsds(6, new InitK())));
+// listTrampoline : jumps out on first value
+var listTrampoline = function (ts) {
+    var ts$ = ts;
+    var i = 0;
+    while (true) {
+        if (i === ts$.length) {
+            i = 0;
+        }
+        var t = ts$[i];
+        if (t instanceof Func) {
+            ts$[i] = t.jump();
+            t = ts$[i];
+        }
+        if (t instanceof Value) {
+            return t.jumpout;
+        }
+        i++;
+    }
+};
+var ts = [fibcpsds(25, new InitK()), fibcpsds(7, new InitK()), fibcpsds(10, new InitK())];
+console.log(listTrampoline(ts));

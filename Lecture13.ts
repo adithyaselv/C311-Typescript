@@ -73,3 +73,47 @@ let runTrampoline: <T>(t: Trampoline<T>) => T = (t) => {
 console.log(runTrampoline(fibcpsds(25, new InitK())));
 
 
+let runBiTrampoline: <T>(t1: Trampoline<T>, t2: Trampoline<T>) => T = (t1, t2) => {
+    let t1$ = t1;
+    let t2$ = t2;
+    while (t1$ instanceof Func && t2$ instanceof Func) {
+        t1$ = t1$.jump();
+        t2$ = t2$.jump();
+    }
+    if(t1$ instanceof Value) {
+        return t1$.jumpout;
+    }
+    if(t2$ instanceof Value) {
+        return t2$.jumpout;
+    }
+}
+
+console.log(runBiTrampoline(fibcpsds(25, new InitK()), fibcpsds(6, new InitK())));
+
+// listTrampoline : jumps out on first value
+
+let listTrampoline: <T>(ts: Trampoline<T>[]) => T = (ts) => {
+    let ts$ = ts;
+    let i = 0;
+    while (true) {
+        if(i === ts$.length) {
+            i=0;
+        }
+        let t = ts$[i];
+        if(t instanceof Func) {
+            ts$[i] = t.jump();
+            t = ts$[i];
+        }
+        if(t instanceof Value) {
+            return t.jumpout;
+        }
+        i++;
+    }
+}
+
+let ts = [fibcpsds(25, new InitK()), fibcpsds(7, new InitK()), fibcpsds(10, new InitK())];
+
+console.log(listTrampoline(ts));
+
+
+
