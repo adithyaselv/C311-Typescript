@@ -23,8 +23,8 @@ let k$: DSCont;
 let applyKds: () => number
 applyKds = () => {
     if(aK$ instanceof MakeKfibsub1n) {
-        n$ = aK$.n - 2;
         k$ = new MakeKfibsub2n(v$, aK$.k);
+        n$ = aK$.n - 2;
         return fibcpsds();
     }
     else if(aK$ instanceof MakeKfibsub2n) {
@@ -53,12 +53,12 @@ fibcpsds = () => {
         return applyKds();
     }
     else {
-        n$ = n$ - 1;
         k$ = new MakeKfibsub1n(n$, k$);
+        n$ = n$ - 1;
         return fibcpsds();
     }
 }
 
-let n$ = 6;
-let k$ = new InitK();
-console.log(fibcpsds(n$, k$));
+n$ = 6;
+k$ = new InitK();
+console.log(fibcpsds());
