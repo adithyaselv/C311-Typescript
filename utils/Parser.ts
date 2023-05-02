@@ -10,7 +10,7 @@ export class Parser {
     this.pos = 0;
     this.tokens = [];
     this.tokenise();
-    console.log(this.tokens);
+    // console.log(this.tokens);
   }
 
   parse(): Exp {
