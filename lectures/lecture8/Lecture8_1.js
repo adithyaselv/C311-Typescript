@@ -33,8 +33,8 @@ valofCallByName = function (exp, env) {
         throw new Error("Invalid input");
     }
 };
-var exp3 = new Parser_1.Parser("((λx.x) 10)").parse();
-var exp4 = new Parser_1.Parser("((λx.42) ((λx.(x x)) (λx.(x x))))").parse();
+var exp3 = new Parser_1.Parser("((λ(x)x) 10)").parse();
+var exp4 = new Parser_1.Parser("((λ(x)42) ((λ(x)(x x)) (λ(x)(x x))))").parse();
 console.log("Testing function valofCallByName");
 console.log(valofCallByName(exp3, function (x) { throw new Error("Unbound variable"); }).toString());
 console.log(valofCallByName(exp4, function (x) { throw new Error("Unbound variable"); }).toString());

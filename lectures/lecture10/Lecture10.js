@@ -63,8 +63,8 @@ valof = function (exp, env) {
 console.log("Testing function valof");
 // let exp1 = new App(new Lambda(new Symbol("x"), new Symbol("x")), new Atom(5));
 // let exp2 = new Lambda(new Symbol("x"), new Symbol("x"));
-var exp1 = new Parser_1.Parser("((λx.x) 5)").parse();
-var exp2 = new Parser_1.Parser("(λx.x)").parse();
+var exp1 = new Parser_1.Parser("((λ(x)x) 5)").parse();
+var exp2 = new Parser_1.Parser("(λ(x)x)").parse();
 console.log(valof(exp1, function (x) { throw new Error("Unbound variable"); }).toString());
 var val1 = valof(exp2, function (x) { throw new Error("Unbound variable"); });
 val1 instanceof Function ? console.log(val1(new LambdaCalculus_1.Atom(25)).toString()) : console.log(val1.toString());

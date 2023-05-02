@@ -90,8 +90,8 @@ valofCallByNeed = function (exp, env) {
         throw new Error("Invalid input");
     }
 };
-var exp3 = new Parser_1.Parser("((λx. (+ x (+ x x))) 10)").parse();
-//let exp4 = new Parser("((λx.42) ((λx.(x x)) (λx.(x x))))").parse();
+var exp3 = new Parser_1.Parser("((λ(x) (+ x (+ x x))) 10)").parse();
+//let exp4 = new Parser("((λ(x)42) ((λ(x)(x x)) (λ(x)(x x))))").parse();
 console.log("Testing function valofCallByName");
 console.log(valofCallByNeed(exp3, initEnv).toString());
 //console.log(valofCallByNeed(exp4, (x: Symbol) => {throw new Error("Unbound variable")}).toString());

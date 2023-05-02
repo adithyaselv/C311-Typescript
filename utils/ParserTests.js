@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Parser_ts_1 = require("./Parser.js");
-let parser = new Parser_ts_1.Parser("((λx. x) 5)");
+var Parser_1 = require("./Parser");
+var parser = new Parser_1.Parser("((λ(x) x) 5)");
 console.log(parser.parse());

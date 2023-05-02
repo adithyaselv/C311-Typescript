@@ -76,8 +76,8 @@ valofRI = (exp, env) => {
 }
 
 console.log("Testing function valofRI");
-let exp3 = new Parser("((λx.x) (+ 5 5))").parse();
-let exp4 = new Parser("(λx.x)").parse(); 
+let exp3 = new Parser("((λ(x)x) (+ 5 5))").parse();
+let exp4 = new Parser("(λ(x)x)").parse(); 
 
 console.log(valofRI(exp3, initEnv).toString());
 let val2 = valofRI(exp4, initEnv);

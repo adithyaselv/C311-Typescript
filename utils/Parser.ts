@@ -3,10 +3,14 @@ import {Exp, Atom, Lambda, App, Symbol, Plus} from "./LambdaCalculus";
 export class Parser {
   private input: string;
   private pos: number;
+  private tokens: string[];
 
   constructor(input: string) {
     this.input = input;
     this.pos = 0;
+    this.tokens = [];
+    this.tokenise();
+    // console.log(this.tokens);
   }
 
   parse(): Exp {
@@ -49,8 +53,9 @@ export class Parser {
 
     if (ch === "λ") {
       this.consume("λ");
+      this.consume("(");
       let symbol = this.parseSymbol();
-      this.consume(".");
+      this.consume(")");
       let body = this.parseExp();
       return new Lambda(symbol, body);
     } 
@@ -109,5 +114,14 @@ export class Parser {
     this.pos++;
 
     return ch;
+  }
+
+  private tokenise(){
+    // Remove leading and trailing whitespace
+    let trimmedInput = this.input.trim();
+    
+    // Split the S-expression into tokens
+    const regex = /([()'"]|\s+)/g;
+    this.tokens = trimmedInput.split(regex).filter((token) => !token.match(/^\s*$/));
   }
 }

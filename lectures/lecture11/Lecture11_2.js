@@ -59,8 +59,8 @@ valofcps = function (exp, env, k) {
 console.log("Testing function valof");
 // let exp1 = new App(new Lambda(new Symbol("x"), new Symbol("x")), new Atom(5));
 // let exp2 = new Lambda(new Symbol("x"), new Symbol("x"));
-var exp1 = new Parser_1.Parser("((λx.x) 5)").parse();
-var exp2 = new Parser_1.Parser("(λx.x)").parse();
+var exp1 = new Parser_1.Parser("((λ(x)x) 5)").parse();
+var exp2 = new Parser_1.Parser("(λ(x)x)").parse();
 console.log("Testing function valofcps");
 console.log(valofcps(exp1, initEnv, function (v) { return v; }).toString());
 var val2 = valofcps(exp2, initEnv, function (v) { return v; });

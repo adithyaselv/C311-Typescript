@@ -6,6 +6,9 @@ var Parser = /** @class */ (function () {
     function Parser(input) {
         this.input = input;
         this.pos = 0;
+        this.tokens = [];
+        this.tokenise();
+        // console.log(this.tokens);
     }
     Parser.prototype.parse = function () {
         this.skipWhitespace();
@@ -40,8 +43,9 @@ var Parser = /** @class */ (function () {
         var ch = this.peek();
         if (ch === "λ") {
             this.consume("λ");
+            this.consume("(");
             var symbol = this.parseSymbol();
-            this.consume(".");
+            this.consume(")");
             var body = this.parseExp();
             return new LambdaCalculus_1.Lambda(symbol, body);
         }
@@ -87,6 +91,13 @@ var Parser = /** @class */ (function () {
         }
         this.pos++;
         return ch;
+    };
+    Parser.prototype.tokenise = function () {
+        // Remove leading and trailing whitespace
+        var trimmedInput = this.input.trim();
+        // Split the S-expression into tokens
+        var regex = /([()'"]|\s+)/g;
+        this.tokens = trimmedInput.split(regex).filter(function (token) { return !token.match(/^\s*$/); });
     };
     return Parser;
 }());
