@@ -1,4 +1,4 @@
-import {Exp, Atom, Lambda, App, Symbol, Plus} from "./LambdaCalculus";
+import {Exp, Atom, Lambda, App, Symbol, Plus, Add1} from "./LambdaCalculus";
 
 export class Parser {
   private input: string;
@@ -10,7 +10,7 @@ export class Parser {
     this.pos = 0;
     this.tokens = [];
     this.tokenise();
-    // console.log(this.tokens);
+    console.log(this.tokens);
   }
 
   parse(): Exp {
@@ -20,7 +20,7 @@ export class Parser {
 
     this.skipWhitespace();
 
-    if (this.pos < this.input.length) {
+    if (this.pos < this.tokens.length) {
       throw new Error("Unexpected input");
     }
 
@@ -64,6 +64,11 @@ export class Parser {
       let left = this.parseExp();
       let right = this.parseExp();
       return new Plus(left, right);
+    }
+    else if (ch === "add1") {
+      this.consume("add1");
+      let e = this.parseExp();
+      return new Add1(e);
     } 
     else {
       let rator = this.parseExp();
@@ -73,27 +78,20 @@ export class Parser {
   }
 
   private parseSymbol(): Symbol {
-    let name = "";
-
-    while (/[a-zA-Z0-9]/.test(this.peek())) {
-      name += this.consume();
-    }
-
+    let name = this.peek();
+    this.consume(name);
     return new Symbol(name);
   }
 
   private parseAtom(): Atom {
-    let numStr = "";
-
-    while (/[0-9]/.test(this.peek())) {
-      numStr += this.consume();
-    }
-
+    let numStr = this.peek();
+    this.consume(numStr);
     let num = parseInt(numStr);
 
     return new Atom(num);
   }
 
+  // not needed since we're tokenising
   private skipWhitespace() {
     while (/\s/.test(this.peek())) {
       this.consume();
@@ -101,11 +99,11 @@ export class Parser {
   }
 
   private peek(): string {
-    return this.input.charAt(this.pos);
+    return this.tokens[this.pos];
   }
 
   private consume(expected?: string): string {
-    let ch = this.input.charAt(this.pos);
+    let ch = this.tokens[this.pos];
 
     if (expected && ch !== expected) {
       throw new Error(`Expected ${expected} but found ${ch}`);

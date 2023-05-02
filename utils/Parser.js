@@ -8,13 +8,13 @@ var Parser = /** @class */ (function () {
         this.pos = 0;
         this.tokens = [];
         this.tokenise();
-        // console.log(this.tokens);
+        console.log(this.tokens);
     }
     Parser.prototype.parse = function () {
         this.skipWhitespace();
         var exp = this.parseExp();
         this.skipWhitespace();
-        if (this.pos < this.input.length) {
+        if (this.pos < this.tokens.length) {
             throw new Error("Unexpected input");
         }
         return exp;
@@ -55,6 +55,11 @@ var Parser = /** @class */ (function () {
             var right = this.parseExp();
             return new LambdaCalculus_1.Plus(left, right);
         }
+        else if (ch === "add1") {
+            this.consume("add1");
+            var e = this.parseExp();
+            return new LambdaCalculus_1.Add1(e);
+        }
         else {
             var rator = this.parseExp();
             var rand = this.parseExp();
@@ -62,17 +67,13 @@ var Parser = /** @class */ (function () {
         }
     };
     Parser.prototype.parseSymbol = function () {
-        var name = "";
-        while (/[a-zA-Z0-9]/.test(this.peek())) {
-            name += this.consume();
-        }
+        var name = this.peek();
+        this.consume(name);
         return new LambdaCalculus_1.Symbol(name);
     };
     Parser.prototype.parseAtom = function () {
-        var numStr = "";
-        while (/[0-9]/.test(this.peek())) {
-            numStr += this.consume();
-        }
+        var numStr = this.peek();
+        this.consume(numStr);
         var num = parseInt(numStr);
         return new LambdaCalculus_1.Atom(num);
     };
@@ -82,10 +83,10 @@ var Parser = /** @class */ (function () {
         }
     };
     Parser.prototype.peek = function () {
-        return this.input.charAt(this.pos);
+        return this.tokens[this.pos];
     };
     Parser.prototype.consume = function (expected) {
-        var ch = this.input.charAt(this.pos);
+        var ch = this.tokens[this.pos];
         if (expected && ch !== expected) {
             throw new Error("Expected ".concat(expected, " but found ").concat(ch));
         }
