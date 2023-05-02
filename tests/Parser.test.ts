@@ -10,7 +10,7 @@ let expLambda2 = new Parser("(λ(x) x)");
 let expApp1 = new Parser("((λ(x) x) 5)");
 let expApp2 = new Parser("((λ(x) (+ 10 10)) (add1 5))");
 
-describe("Parser", () => {
+describe("Parser Positive tests", () => {
     test ("parse atom 1", () => {
         expect(expAtom1.parse()).toEqual(new Atom(5));
     });
@@ -42,5 +42,39 @@ describe("Parser", () => {
     test ("parse App 2", () => {
         expect(expApp2.parse()).toEqual(new App(new Lambda(new Symbol("x"), new Plus(new Atom(10), new Atom(10))), new Add1(new Atom(5))));
     });
+});
 
+// describe negative tests
+
+let expAtom3 = new Parser("5 5");
+let expSymbol3 = new Parser("x y");
+let expLambda3 = new Parser("(lambda (x) x) 5");
+let expApp3 = new Parser("((λ(x) x) 5) 5");
+let expfunc1 = new Parser("(+ 10 10 20)");
+let expfunc2 = new Parser("(add1 x 10)");
+
+describe("Parser negative tests", () => {
+    test ("parse atom 3", () => {
+        expect(() => expAtom3.parse()).toThrow();
+    });
+
+    test ("parse symbol 3", () => {
+        expect(() => expSymbol3.parse()).toThrow();
+    });
+
+    test ("parse Lambda 3", () => {
+        expect(() => expLambda3.parse()).toThrow();
+    });
+
+    test ("parse App 3", () => {
+        expect(() => expApp3.parse()).toThrow();
+    });
+
+    test ("parse func 1", () => {
+        expect(() => expfunc1.parse()).toThrow();
+    });
+
+    test ("parse func 2", () => {
+        expect(() => expfunc2.parse()).toThrow();
+    });
 });
