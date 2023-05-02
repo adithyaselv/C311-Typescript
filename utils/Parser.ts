@@ -1,4 +1,4 @@
-import {Exp, Atom, Lambda, App, Symbol, Plus, Add1} from "./LambdaCalculus";
+import {Exp, Atom, Lambda, App, Symbol, Plus, Add1, Sub1} from "./LambdaCalculus";
 
 export class Parser {
   private input: string;
@@ -51,8 +51,8 @@ export class Parser {
 
     let ch = this.peek();
 
-    if (ch === "λ") {
-      this.consume("λ");
+    if (ch === "λ" || ch === "lambda") {
+      this.consume(ch);
       this.consume("(");
       let symbol = this.parseSymbol();
       this.consume(")");
@@ -69,6 +69,11 @@ export class Parser {
       this.consume("add1");
       let e = this.parseExp();
       return new Add1(e);
+    }
+    else if (ch === "sub1") {
+      this.consume("sub1");
+      let e = this.parseExp();
+      return new Sub1(e);
     } 
     else {
       let rator = this.parseExp();

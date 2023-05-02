@@ -41,8 +41,8 @@ var Parser = /** @class */ (function () {
     Parser.prototype.parseAppOrLambda = function () {
         this.skipWhitespace();
         var ch = this.peek();
-        if (ch === "λ") {
-            this.consume("λ");
+        if (ch === "λ" || ch === "lambda") {
+            this.consume(ch);
             this.consume("(");
             var symbol = this.parseSymbol();
             this.consume(")");
@@ -59,6 +59,11 @@ var Parser = /** @class */ (function () {
             this.consume("add1");
             var e = this.parseExp();
             return new LambdaCalculus_1.Add1(e);
+        }
+        else if (ch === "sub1") {
+            this.consume("sub1");
+            var e = this.parseExp();
+            return new LambdaCalculus_1.Sub1(e);
         }
         else {
             var rator = this.parseExp();
@@ -77,6 +82,7 @@ var Parser = /** @class */ (function () {
         var num = parseInt(numStr);
         return new LambdaCalculus_1.Atom(num);
     };
+    // not needed since we're tokenising
     Parser.prototype.skipWhitespace = function () {
         while (/\s/.test(this.peek())) {
             this.consume();
