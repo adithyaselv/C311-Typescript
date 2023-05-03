@@ -2,8 +2,8 @@
 import {Exp, Atom, Lambda, App, Symbol, Value, Closure} from "../../utils/LambdaCalculus";
 import { Parser } from "../../utils/Parser";
 
-type KV = {key: Symbol , val: Value};
-type Env = KV[];
+export type KV = {key: Symbol , val: Value};
+export type Env = KV[];
 
 let extendEnv = (x: Value, arg: Symbol, env: Env) => {
     return [{key: arg, val: x}, ...env];
@@ -56,3 +56,5 @@ let exp4 = new Parser("(λ(x)x)").parse();
 console.log(valofRI(exp3, initEnv).toString());
 let val2 = valofRI(exp4, initEnv);
 val2 instanceof Function ? console.log(val2(new Atom(25)).toString()) : console.log(val2.toString());
+
+export {valofRI as valofRIDS};

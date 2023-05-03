@@ -93,3 +93,5 @@ let exp4 = new Parser("(λ(x)x)").parse();
 console.log(valofRI(exp3, initEnv).toString());
 let val2 = valofRI(exp4, initEnv);
 val2 instanceof Function ? console.log(val2(new Atom(25)).toString()) : console.log(val2.toString());
+
+export {valofRI};

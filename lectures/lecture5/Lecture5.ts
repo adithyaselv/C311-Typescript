@@ -41,3 +41,5 @@ let exp2 = new Parser("(λ(x)x)").parse();
 console.log(valof(exp1, (x: Symbol) => {throw new Error("Unbound variable")}).toString());
 let val1 = valof(exp2, (x: Symbol) => {throw new Error("Unbound variable")});
 val1 instanceof Function ? console.log(val1(new Atom(25)).toString()) : console.log(val1.toString());
+
+export {valof};
