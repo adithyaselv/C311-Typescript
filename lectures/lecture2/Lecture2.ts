@@ -147,3 +147,6 @@ curryiedPlus = (n) => {
 
 console.log("Testing function curryiedPlus");
 console.log(curryiedPlus(3)(5));
+
+
+export { plus, mult, exp, exp2, G, GG, map, curryiedPlus }

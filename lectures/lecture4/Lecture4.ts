@@ -121,3 +121,5 @@ console.log(occursBound(sym5, exp10));
 console.log(occursBound(sym5, exp11));
 console.log(occursBound(sym5, exp12));
 console.log(occursBound(sym6, exp12));
+
+export {ExpEqExp, occurs, occursFree, occursBound};
