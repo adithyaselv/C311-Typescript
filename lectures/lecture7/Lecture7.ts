@@ -15,7 +15,7 @@ class Closure {
 type Value = Atom | Closure;
 
 type KV = {key: Symbol , val: Value};
-type Env = KV[];
+export type Env = KV[];
 
 let extendEnv = (x: Value, arg: Symbol, env: Env) => {
     return [{key: arg, val: x}, ...env];
@@ -83,3 +83,5 @@ console.log(valofRI(exp3, initEnv).toString());
 let val2 = valofRI(exp4, initEnv);
 console.log(val2.toString())
 val2 instanceof Closure ? console.log(applyClosure(val2 ,new Atom(25)).toString()) : console.log(val2.toString());
+
+export {valofRI};
